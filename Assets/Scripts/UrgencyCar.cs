@@ -1,7 +1,7 @@
 using UnityEngine;
 
 // Repara: Herda de Vehicle e NÃO de MonoBehaviour
-public class UrgencyCar : Vehicle
+public class UrgencyCar : MonoBehaviour
 {
 
     [SerializeField] GameObject Light1;
@@ -10,8 +10,6 @@ public class UrgencyCar : Vehicle
     SpriteRenderer L1Sprite;
     SpriteRenderer L2Sprite;
 
-    public bool isAtRedLight = false;
-    bool changeLight = true;
     void Start(){
 
         L1Sprite = Light1.GetComponent<SpriteRenderer>();
@@ -21,13 +19,6 @@ public class UrgencyCar : Vehicle
 
     }
 
-    // Como é um MonoBehaviour (através do Vehicle), pode usar o Update!
-    void Update(){
-        if (!isAtRedLight)
-        {
-            //Move(); 
-        }
-    }
 
     // Código específico do Carro para bater (Hit)
     void OnCollisionEnter2D(Collision2D collision){

@@ -8,22 +8,33 @@ public class TrafficLight : MonoBehaviour, IPointerClickHandler
     SpriteRenderer greenSprite;
     SpriteRenderer redSprite;
 
-    bool isRed = true;
+    public bool isRed
+    {
+        get { return _isRed; }
+        set
+        {
+            _isRed = value;
+            changeColor(); // A magia acontece aqui: sempre que alterares o IsRed, a cor atualiza sozinha!
+        }
+    }
+
+    // Variável privada real que guarda o valor (o _ no início é convenção para variáveis privadas)
+    private bool _isRed = true;
+
+    
 
     void Start()
     {
+       
         greenSprite = greenLight.GetComponent<SpriteRenderer>();
         redSprite = redLight.GetComponent<SpriteRenderer>();
-        changeColor();
+        isRed = true;
     }
 
     // 3. Esta é a versão moderna e oficial que substitui o OnMouseDown -> Da com o rato ou com o dedo
     public void OnPointerClick(PointerEventData eventData)
     {
-        Debug.Log(greenSprite.color);
-        Debug.Log(redSprite.color);
         isRed = !isRed;
-        changeColor();  
     }
 
     void changeColor()
@@ -37,4 +48,5 @@ public class TrafficLight : MonoBehaviour, IPointerClickHandler
             redSprite.color = Color.gray;
         }
     }
+
 }

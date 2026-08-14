@@ -686,6 +686,22 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 053b73d19e13761438a37dde1530f816, type: 3}
+--- !u!1 &1625855191 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3257864071411102158, guid: 8f983324dd1820647bb2b960bc6b2f21, type: 3}
+  m_PrefabInstance: {fileID: 122860845538149659}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1659990383 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4682328189534839520, guid: 5a1eb2a31dccce44e9dc7576a8abc845, type: 3}
+  m_PrefabInstance: {fileID: 8173989635756388465}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7c8a221f2aa3a7446b8830a417c07916, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::TrafficLight
 --- !u!1001 &1682216776
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -738,6 +754,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Road (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 4492362056885280017, guid: 0b14f09e9fefcd74fab81f75c04c91c2, type: 3}
+      propertyPath: myStopLine
+      value: 
+      objectReference: {fileID: 1625855191}
+    - target: {fileID: 4492362056885280017, guid: 0b14f09e9fefcd74fab81f75c04c91c2, type: 3}
+      propertyPath: myTrafficLight
+      value: 
+      objectReference: {fileID: 1659990383}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1249,7 +1273,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7813857432128450303, guid: 46fb8aa8329593241893c7b8bdc84775, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -2.43
+      value: -9.29
       objectReference: {fileID: 0}
     - target: {fileID: 7813857432128450303, guid: 46fb8aa8329593241893c7b8bdc84775, type: 3}
       propertyPath: m_LocalPosition.y

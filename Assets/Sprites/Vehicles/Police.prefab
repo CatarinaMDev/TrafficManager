@@ -102,6 +102,9 @@ GameObject:
   - component: {fileID: 7813857432128450303}
   - component: {fileID: 2545188416711138518}
   - component: {fileID: 6889233235879814373}
+  - component: {fileID: 3097571593399326778}
+  - component: {fileID: 5265930184908305723}
+  - component: {fileID: 7186165419586243528}
   m_Layer: 0
   m_Name: Police
   m_TagString: Vehicle
@@ -203,17 +206,103 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71106753d74548c478eae8610d61d096, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UrgencyCar
-  speed: 8
-  color: {r: 0.8773585, g: 0.83183515, b: 0.83183515, a: 0}
-  direction: 0
-  way: 0
-  isUrgent: 1
-  isRoadVehicle: 1
-  baseObject: {fileID: 4491512474711727812}
-  baseSprite: {fileID: 7265967906751893168}
   Light1: {fileID: 3803708610114602153}
   Light2: {fileID: 3673332151434676292}
-  isAtRedLight: 0
+--- !u!114 &3097571593399326778
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 332728650633909054}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 72cc935767a50d24089aef0aa05ac742, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Car
+  speed: 6
+  color: {r: 1, g: 1, b: 1, a: 0}
+  direction: 
+  way: 
+  isUrgent: 1
+  isRoadVehicle: 1
+  isInRedLight: 0
+  vectorWay: {x: 0, y: 0, z: 0}
+  baseObject: {fileID: 4491512474711727812}
+  baseSprite: {fileID: 7265967906751893168}
+--- !u!61 &5265930184908305723
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 332728650633909054}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1, y: 1}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Size: {x: 1, y: 1}
+  m_EdgeRadius: 0
+--- !u!50 &7186165419586243528
+Rigidbody2D:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 332728650633909054}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1 &393140046248170009
 GameObject:
   m_ObjectHideFlags: 0
