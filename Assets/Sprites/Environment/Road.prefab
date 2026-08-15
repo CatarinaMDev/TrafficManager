@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 2781143912150777365}
   - component: {fileID: 4492362056885280017}
   - component: {fileID: 5514314915465803788}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Road
   m_TagString: Road
   m_Icon: {fileID: 0}
@@ -106,7 +106,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Road
   myTrafficLight: {fileID: 4682328189534839520, guid: 5a1eb2a31dccce44e9dc7576a8abc845, type: 3}
-  myStopLine: {fileID: 0}
+  Z: 0
+  Y: 0
+  X: 0
+  direction: 0
 --- !u!61 &5514314915465803788
 BoxCollider2D:
   m_ObjectHideFlags: 0

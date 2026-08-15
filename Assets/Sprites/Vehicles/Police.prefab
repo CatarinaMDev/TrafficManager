@@ -227,9 +227,12 @@ MonoBehaviour:
   isUrgent: 1
   isRoadVehicle: 1
   isInRedLight: 0
-  vectorWay: {x: 0, y: 0, z: 0}
   baseObject: {fileID: 4491512474711727812}
   baseSprite: {fileID: 7265967906751893168}
+  raycastSees:
+    serializedVersion: 2
+    m_Bits: 8
+  myWay: {x: 0, y: 0, z: 0}
 --- !u!61 &5265930184908305723
 BoxCollider2D:
   m_ObjectHideFlags: 0
