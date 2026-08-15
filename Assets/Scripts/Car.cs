@@ -8,7 +8,10 @@ public class Car : Vehicle
     private TrafficLight trafficLight;
     private bool hasPassedStopLine = false;
 
+    private bool isGonnaChangeRoad = false;
+    private bool hasRoad = false;
 
+    public Vector3 myWay;
 
     void Update() {
   
@@ -16,37 +19,36 @@ public class Car : Vehicle
         {
             if (isUrgent || !trafficLight.isRed || hasPassedStopLine)
             {
-                base.Move();
+                base.Move(myWay);
             }
             else
             {
-                base.StopMovement();
+                base.StopMovement(myWay);
             }
         }
         else
         {
-            Debug.Log("AINDFA N TENHO SEMAFORO" + this.tag);
-            base.Move();
+            base.Move(myWay);
         }
     }
 
     // Código específico do Carro para bater (Hit)
-    void OnTriggerEnter2D(Collider2D collision)
+    void OnTriggerEnter2D(Collider2D collision) //falta pararem antes da linha ou seja avancam o maximo possivel ate a linha ou outro carro parado na mm estrada
     {
-
         base.OnTriggerEnter2D(collision);
 
         if (collision.gameObject.tag == "StopLine")
         {
-            Debug.Log("Passed Line!");
             hasPassedStopLine = true;
 
-        }else if(collision.gameObject.tag == "Road")
+        }else if(collision.gameObject.tag == "Road" && !hasRoad)
         {
-            Debug.Log("ESTOU NA ESTRADA e TENHO O SEMAFORO " + collision.GetComponent<Road>().myTrafficLight + "EU SOU " + this.name);
             trafficLight = collision.GetComponent<Road>().myTrafficLight;
+            myWay = collision.GetComponent<Road>().getDirection();
+            hasRoad = true; //Falta a parte de mudar de estrada
         }
     }
+    
 
 
 }
