@@ -269,7 +269,6 @@ MonoBehaviour:
   isUrgent: 0
   isRoadVehicle: 0
   isInRedLight: 1
-  vectorWay: {x: 0, y: 0, z: 0}
   baseObject: {fileID: 2775115566358016867}
   baseSprite: {fileID: 8532887331398628436}
 --- !u!61 &2787467052800584278

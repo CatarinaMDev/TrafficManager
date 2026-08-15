@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1629377028199076809}
   - component: {fileID: 1470171705032513486}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Light2 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -105,7 +105,7 @@ GameObject:
   - component: {fileID: -8601501074308686540}
   - component: {fileID: 1530048365067481055}
   - component: {fileID: 3367811332389513991}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Ambulance
   m_TagString: Vehicle
   m_Icon: {fileID: 0}
@@ -230,9 +230,12 @@ MonoBehaviour:
   isUrgent: 1
   isRoadVehicle: 1
   isInRedLight: 0
-  vectorWay: {x: 0, y: 0, z: 0}
   baseObject: {fileID: 4491512474711727812}
   baseSprite: {fileID: 7265967906751893168}
+  raycastSees:
+    serializedVersion: 2
+    m_Bits: 8
+  myWay: {x: 0, y: 0, z: 0}
 --- !u!61 &1530048365067481055
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -316,7 +319,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6559357423849214757}
   - component: {fileID: 6032757939274720150}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Circle (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -407,7 +410,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3229118968979784040}
   - component: {fileID: 6787833161397019688}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Circle (5)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -498,7 +501,7 @@ GameObject:
   m_Component:
   - component: {fileID: 291383229952267489}
   - component: {fileID: 1916364840738101630}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Circle (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -589,7 +592,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2473060572697505738}
   - component: {fileID: 1104346570896990172}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Light2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -680,7 +683,7 @@ GameObject:
   m_Component:
   - component: {fileID: 143212805690744466}
   - component: {fileID: 5020109415782505082}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Light1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -771,7 +774,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3482396952662947006}
   - component: {fileID: 7265967906751893168}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Base
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -862,7 +865,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7379839421590309810}
   - component: {fileID: 5199765401883994078}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Front
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -953,7 +956,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8752759914358354778}
   - component: {fileID: 7426926324216866061}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Front (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1044,7 +1047,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1856965124161077428}
   - component: {fileID: 3041375546711651513}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Circle (6)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1135,7 +1138,7 @@ GameObject:
   m_Component:
   - component: {fileID: 540233318099324300}
   - component: {fileID: 8983142148496896312}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Front (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}

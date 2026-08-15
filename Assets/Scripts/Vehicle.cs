@@ -8,9 +8,9 @@ public abstract class Vehicle : MonoBehaviour
     public string direction;//(1-> horizontal 2-> vertical)
     public string way; //(1-> down, 2-> up // 1- > left 2-> right)
 
-    public bool isUrgent = false;
-    public bool isRoadVehicle = true;
-    public bool isInRedLight = true;
+    public bool isUrgent;
+    public bool isRoadVehicle;
+    public bool isInRedLight;
 
     public GameObject baseObject;
     public SpriteRenderer baseSprite;
@@ -26,6 +26,7 @@ public abstract class Vehicle : MonoBehaviour
     protected virtual void StopMovement(Vector3 direction)
     {
         transform.Translate(direction * Time.deltaTime * 0f);
+        Debug.Log("EU:" + this.gameObject.name + "PAREI");
         
 
     }

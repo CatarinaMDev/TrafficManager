@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 1199717137006295025}
   - component: {fileID: 2336825780685595030}
   - component: {fileID: 3454885849066375547}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Truck
   m_TagString: Vehicle
   m_Icon: {fileID: 0}
@@ -121,9 +121,12 @@ MonoBehaviour:
   isUrgent: 0
   isRoadVehicle: 1
   isInRedLight: 1
-  vectorWay: {x: 0, y: 0, z: 0}
   baseObject: {fileID: 4491512474711727812}
   baseSprite: {fileID: 7265967906751893168}
+  raycastSees:
+    serializedVersion: 2
+    m_Bits: 8
+  myWay: {x: 0, y: 0, z: 0}
 --- !u!61 &2336825780685595030
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -207,7 +210,7 @@ GameObject:
   m_Component:
   - component: {fileID: 676816407878138770}
   - component: {fileID: 1193505592481311955}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Base (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -298,7 +301,7 @@ GameObject:
   m_Component:
   - component: {fileID: 266283773087442268}
   - component: {fileID: 2147724874063926777}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Circle (8)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -389,7 +392,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4065304569276706464}
   - component: {fileID: 8421747517937845011}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Circle (7)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -480,7 +483,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6816597092465825179}
   - component: {fileID: 2442865487179204220}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Circle (5)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -571,7 +574,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3482396952662947006}
   - component: {fileID: 7265967906751893168}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Base
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -662,7 +665,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8811851993353066526}
   - component: {fileID: 1024012900597688065}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Circle (9)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -753,7 +756,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4676665033158609085}
   - component: {fileID: 6301865413218595640}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Circle (6)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -844,7 +847,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3001454637896159360}
   - component: {fileID: 4020074172434199888}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Circle (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
