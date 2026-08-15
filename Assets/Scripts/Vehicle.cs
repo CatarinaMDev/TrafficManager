@@ -12,8 +12,6 @@ public abstract class Vehicle : MonoBehaviour
     public bool isRoadVehicle = true;
     public bool isInRedLight = true;
 
-    public Vector3 vectorWay;
-
     public GameObject baseObject;
     public SpriteRenderer baseSprite;
 
@@ -22,18 +20,20 @@ public abstract class Vehicle : MonoBehaviour
     {
         
         baseSprite.color = this.color;
-
     }
 
 
-    protected virtual void StopMovement()
+    protected virtual void StopMovement(Vector3 direction)
     {
-        transform.Translate(Vector3.right * Time.deltaTime * 0f);
+        transform.Translate(direction * Time.deltaTime * 0f);
+        
+
     }
 
-    protected virtual void Move()
+    protected virtual void Move(Vector3 direction)
     {
-        this.transform.Translate(Vector3.right * speed * Time.deltaTime);
+        this.transform.Translate(direction * speed * Time.deltaTime);
+        
     }
 
     protected virtual void OnTriggerEnter2D(Collider2D collision)
@@ -49,6 +49,7 @@ public abstract class Vehicle : MonoBehaviour
     {
         Destroy(this.gameObject);
     }
+
 
 }
 
