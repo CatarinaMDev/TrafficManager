@@ -3,6 +3,7 @@ using UnityEngine.SceneManagement; // Obrigatório para lidar com Cenas!
 
 public class LevelManager : MonoBehaviour
 {
+    public static LevelManager instance;
     private int nivelAtual;
 
     public GameObject road_vehicles;
@@ -20,16 +21,31 @@ public class LevelManager : MonoBehaviour
     public GameObject trainPrefab;
     public GameObject boatPrefab;
 
-
     public int totalCarsNeeded;
+    public int totalCarsPassed;
+    
+
+
+    void Awake()
+    {
+        if (instance != null)
+        {
+            Destroy(gameObject);
+        }
+        else
+        {
+            instance = this;
+        }
+    }
 
     void Start()
     {
-        // Descobre automaticamente em que nível estamos através do Build Index -> Usa a scene
+        totalCarsPassed = 0;
+        
         nivelAtual = SceneManager.GetActiveScene().buildIndex;
 
         Debug.Log("Bem-vindo ao Nível " + nivelAtual);
-    
+            
         if (roads == null)
             roads = GameObject.FindGameObjectsWithTag("Road");
         Debug.Log("Estradas detetadas automaticamente: " + roads.Length);
@@ -42,14 +58,9 @@ public class LevelManager : MonoBehaviour
             rails = GameObject.FindGameObjectsWithTag("Rail");
         Debug.Log("Caminhos de Ferro detetados automaticamente: " + rails.Length);
 
-        InvokeRepeating("AddCar", 0f, 5f);//dps falta pensar em evocar o train e o boat
-        totalCarsNeeded = nivelAtual + 5;
 
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
+        InvokeRepeating("AddCar", 0f, 2f);//dps falta pensar em evocar o train e o boat
+        totalCarsNeeded = nivelAtual + 5;//ver a matematica q vou usar
 
     }
 
@@ -58,7 +69,17 @@ public class LevelManager : MonoBehaviour
         //dps falta pensar nas probabilisticas entre carro normal (dps carro > truck) > e urgenci (dps police>ambulance)
         int spawnRoad = Random.Range(0, roads.Length);
         Vector3 posEstrada = roads[spawnRoad].transform.position;
+        Debug.Log("ESTRADA NR: "+ spawnRoad  + "POS ESTRADA: " + posEstrada);
         
         Instantiate(carPrefab, new Vector3(-9.34f, posEstrada.y, posEstrada.z), Quaternion.identity);
+    }
+
+    public void AddPoints()
+    {
+        totalCarsPassed++;
+        if (totalCarsPassed == totalCarsNeeded)
+        {
+            GameManager.instance.LevelCompleted();
+        }
     }
 }

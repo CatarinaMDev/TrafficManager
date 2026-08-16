@@ -37,14 +37,17 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    void GameOver()
+    public void GameOver()
     {
-
+        Debug.Log("GAME OVER");
+        PauseGame();
     }
 
-    void LevelCompleted()
+    public void LevelCompleted()
     {
-        SceneManager.LoadScene(nivelAtual + 1);
+        Debug.Log("LEVEL COMPLETED");
+        PauseGame();
+        //SceneManager.LoadScene(nivelAtual + 1);
     }
 
     void PauseGame()
