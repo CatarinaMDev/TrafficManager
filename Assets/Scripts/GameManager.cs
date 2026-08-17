@@ -3,7 +3,7 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
-    private bool levelPaused;
+    private bool levelPaused = true;
     private int nivelAtual;
 
 
@@ -23,7 +23,7 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         nivelAtual = SceneManager.GetActiveScene().buildIndex;
-        levelPaused = false;
+        PauseGame();
     }
 
     void Update()
@@ -31,10 +31,12 @@ public class GameManager : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.P)){
             PauseGame();
         }
-        if (Input.GetKeyDown(KeyCode.E))
+        if (Input.GetKeyDown(KeyCode.R))
         {
-            LevelCompleted();
-        }
+            RestartLevel();        
+         }
+
+
     }
 
     public void GameOver()
@@ -48,6 +50,7 @@ public class GameManager : MonoBehaviour
         Debug.Log("LEVEL COMPLETED");
         PauseGame();
         //SceneManager.LoadScene(nivelAtual + 1);
+
     }
 
     void PauseGame()
@@ -67,12 +70,12 @@ public class GameManager : MonoBehaviour
 
     void RestartGame()
     {
-
+        SceneManager.LoadScene(nivelAtual);
     }
 
     void RestartLevel()
     {
-
+        SceneManager.LoadScene(nivelAtual);
     }
 
     void BackToMainMenu()

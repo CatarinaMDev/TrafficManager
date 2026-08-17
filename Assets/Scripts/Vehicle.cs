@@ -32,6 +32,8 @@ public abstract class Vehicle : MonoBehaviour
         {
             baseSprite.color = Color.white;
         }
+
+       
     }
 
 

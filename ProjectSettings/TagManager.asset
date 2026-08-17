@@ -9,6 +9,8 @@ TagManager:
   - Rail
   - River
   - StopLine
+  - Checkmark
+  - Spawn
   layers:
   - Default
   - TransparentFX
