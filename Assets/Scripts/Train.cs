@@ -8,6 +8,10 @@ public class Train : Vehicle
     private SpriteRenderer baseSprite1;
     private SpriteRenderer baseSprite2;
     private SpriteRenderer baseSprite3;
+
+    private bool hasRail = false;
+    private Vector2 myWay;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -20,9 +24,10 @@ public class Train : Vehicle
         baseSprite3.color = Color.pink;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+    void OnTriggerEnter2D(Collider2D collision) {
+        if (collision.gameObject.tag == "Rail" && !hasRail) {
+            myWay = collision.GetComponent<Rail>().getDirection();
+            hasRail = true;
+        }
     }
 }

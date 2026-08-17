@@ -118,7 +118,7 @@ MonoBehaviour:
   way: 0
   isUrgent: 0
   isRoadVehicle: 1
-  isInRedLight: 1
+  isInRedLight: 0
   baseObject: {fileID: 4491512474711727812}
   baseSprite: {fileID: 7265967906751893168}
   colors:

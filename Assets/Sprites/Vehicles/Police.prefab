@@ -101,7 +101,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1629377028199076809}
   - component: {fileID: 1470171705032513486}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Light2 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -196,7 +196,7 @@ GameObject:
   - component: {fileID: 3097571593399326778}
   - component: {fileID: 5265930184908305723}
   - component: {fileID: 7186165419586243528}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Police
   m_TagString: Vehicle
   m_Icon: {fileID: 0}
@@ -594,7 +594,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7789791130449046227}
   - component: {fileID: 5759092946681582813}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Check
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -685,7 +685,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2473060572697505738}
   - component: {fileID: 1104346570896990172}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Light2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -776,7 +776,7 @@ GameObject:
   m_Component:
   - component: {fileID: 143212805690744466}
   - component: {fileID: 5020109415782505082}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Light1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -867,7 +867,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3482396952662947006}
   - component: {fileID: 7265967906751893168}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Base
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1106,6 +1106,18 @@ PrefabInstance:
     - target: {fileID: 3507592053762509972, guid: 52f4024cc8e646c4c84bc0eeba9040b5, type: 3}
       propertyPath: m_Name
       value: Check (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3507592053762509972, guid: 52f4024cc8e646c4c84bc0eeba9040b5, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5297460873339310576, guid: 52f4024cc8e646c4c84bc0eeba9040b5, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6212840957827910736, guid: 52f4024cc8e646c4c84bc0eeba9040b5, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

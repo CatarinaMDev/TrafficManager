@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public enum Direction
+public enum DirectionRail
 {
     left,
     right,
@@ -9,32 +9,28 @@ public enum Direction
 }
 
 
-public class Road : MonoBehaviour
+public class Rail : MonoBehaviour
 {
-    [SerializeField] public TrafficLight myTrafficLight;
-    [SerializeField] public Direction direction;
+    [SerializeField] public DirectionRail direction;
     public Transform spawnPoint;
+    // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-
+        
     }
 
     public Vector3 getDirection()
     {
         switch (direction)
         {
-            case Direction.left:
+            case DirectionRail.left:
                 return Vector3.left;
-            case Direction.right:
+            case DirectionRail.right:
                 return Vector3.right;
-            case Direction.up:
+            case DirectionRail.up:
                 return Vector3.up;
             default:
                 return Vector3.down;
         }
-
     }
-
-
-
 }

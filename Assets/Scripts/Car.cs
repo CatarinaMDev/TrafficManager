@@ -19,7 +19,9 @@ public class Car : Vehicle
         {
             check.SetActive(false);
         }
+        
     }
+
     void Update()
     {
 
@@ -28,33 +30,37 @@ public class Car : Vehicle
             if (hasRoad)
             {
                     Debug.DrawRay(transform.position + (myWay * 0.5f), myWay * distance, Color.pink);
-                    RaycastHit2D hit = Physics2D.Raycast(transform.position + (myWay * 0.5f), myWay, distance, raycastSees);
+                    
+                    RaycastHit2D hit = Physics2D.Raycast(transform.position + (myWay * 0.5f), myWay, distance , raycastSees);
                     if (hit.collider != null)
                     {
-                        
+                    Debug.Log("Collider q apanhei:" + hit.collider.tag);
                         if (hit.collider.tag == "Vehicle")
                         {
-                            
-                            base.StopMovement(myWay);
+                        Debug.Log("Eu: "+ this.name+ " + Paro por causa da viatura:"+hit.collider.name);
+                        base.StopMovement(myWay);
                         }
-                        else if (hit.collider.tag == "StopLine" && !isUrgent && trafficLight.isRed)
+                        else if (hit.collider.tag == "StopLine" && !isUrgent &&  trafficLight.isRed)
                         {
-                           
-                            base.StopMovement(myWay);
+                        Debug.Log("Eu: " + this.name+"Paro por causa da linha");
+                        base.StopMovement(myWay);
                         }
                         else
                         {
+                        Debug.Log("Eu: " + this.name + "N paro pq n era viatura nem linha");
                             base.Move(myWay);
                         }
                     }
                     else
                     {
+                    Debug.Log("Eu: " + this.name + "N paro pq n detetei");
                         base.Move(myWay);
                     }
                 }
                 else
                 {
-                    base.Move(myWay);
+                Debug.Log(" paro pq n tenho estrada");
+                    base.StopMovement(myWay);
                 }
 
     
@@ -62,15 +68,31 @@ public class Car : Vehicle
     }
 
     // Código específico do Carro para bater (Hit)
-    void OnTriggerEnter2D(Collider2D collision) //falta pararem antes da linha ou seja avancam o maximo possivel ate a linha ou outro carro parado na mm estrada
+    void OnTriggerEnter2D(Collider2D collision) 
     {
         base.OnTriggerEnter2D(collision);
 
         if(collision.gameObject.tag == "Road" && !hasRoad)
         {
-            
             trafficLight = collision.GetComponent<Road>().myTrafficLight;
             myWay = collision.GetComponent<Road>().getDirection();
+
+         /**   switch(myWay)
+            {
+                case Vector3.left:
+                    transform.rotation.y =    -180f;
+                    break;
+                case Vector3.right:
+                    transform.rotation.y = 0f;
+                    break;
+                case Vector3.up:
+                    transform.rotation.z = 90f;
+                    break;
+                case Vector3.down:
+                    transform.rotation.y = -90f;
+                    break;
+            }
+         **/
             hasRoad = true; //Falta a parte de mudar de estrada
         }
         else if (collision.gameObject.tag == "Checkmark")

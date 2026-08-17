@@ -6,18 +6,11 @@ public class LevelManager : MonoBehaviour
     public static LevelManager instance;
     private int nivelAtual;
 
-    public GameObject road_vehicles;
-    public GameObject river_vehicles;
-    public GameObject rail_vehicles;
-
     private GameObject[] roads;
     private GameObject[] rivers;
     private GameObject[] rails;
 
-    public GameObject carPrefab;
-    public GameObject truckPrefab;
-    public GameObject ambulancePrefab;
-    public GameObject policePrefab;
+    public GameObject[] roadVehicles;
     public GameObject trainPrefab;
     public GameObject boatPrefab;
 
@@ -41,7 +34,6 @@ public class LevelManager : MonoBehaviour
     void Start()
     {
         totalCarsPassed = 0;
-        
         nivelAtual = SceneManager.GetActiveScene().buildIndex;
 
         Debug.Log("Bem-vindo ao Nível " + nivelAtual);
@@ -59,19 +51,39 @@ public class LevelManager : MonoBehaviour
         Debug.Log("Caminhos de Ferro detetados automaticamente: " + rails.Length);
 
 
-        InvokeRepeating("AddCar", 0f, 2f);//dps falta pensar em evocar o train e o boat
+        InvokeRepeating("AddRoadVehicle", 0f, 2f);//dps falta pensar em evocar o train e o boat
         totalCarsNeeded = nivelAtual + 5;//ver a matematica q vou usar
 
     }
 
-    void AddCar()
+    void AddRoadVehicle()
     {
-        //dps falta pensar nas probabilisticas entre carro normal (dps carro > truck) > e urgenci (dps police>ambulance)
-        int spawnRoad = Random.Range(0, roads.Length);
-        Vector3 posEstrada = roads[spawnRoad].transform.position;
-        Debug.Log("ESTRADA NR: "+ spawnRoad  + "POS ESTRADA: " + posEstrada);
+        GameObject roadPrefab = roadVehicles[Random.Range(0, roadVehicles.Length)];//mudar a probabilistica entre carro normal (dps carro > truck) > e urgenci (dps police>ambulance)
+        GameObject roadChosen = roads[Random.Range(0, roads.Length)];
+
+        Vector3 position = roadChosen.GetComponent<Road>().spawnPoint.position;
+        Instantiate(roadPrefab, new Vector3(position.x, position.y,position.z), Quaternion.identity);
+    }
+        void AddTrain()
+    {
         
-        Instantiate(carPrefab, new Vector3(-9.34f, posEstrada.y, posEstrada.z), Quaternion.identity);
+        GameObject railChosen= rails[Random.Range(0, rails.Length)];
+
+        Vector3 position = railChosen.GetComponent<Rail>().spawnPoint.position;
+        Instantiate(trainPrefab, new Vector3(position.x, position.y, position.z), Quaternion.identity);
+    }
+
+
+    void AddBoat()
+    {
+  
+        /**River riverChosen = rivers[0];
+
+        Transform spawnPoint = riverChosen.GetComponent<River>().spawnPoint;
+        Vector3 position = spawnPoint.position;
+        Vector3 direction = riverChosen.GetComponent<River>().getDirection();
+        Instantiate(boatPrefab, new Vector3(position.x, position.y,position.z), Quaternion.identity);
+    */
     }
 
     public void AddPoints()
