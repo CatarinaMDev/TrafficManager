@@ -30,7 +30,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -2.867, y: -1.821, z: 0}
-  m_LocalScale: {x: 3.0851743, y: 0.1770336, z: 1}
+  m_LocalScale: {x: 5, y: 0.2401923, z: 1.1671063}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 3482396952662947006}
@@ -109,7 +109,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4cd51734a3a97446b959125436bc006, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Train
-  speed: 8
+  speed: 3
   direction: 0
   way: 0
   isUrgent: 0
@@ -118,11 +118,14 @@ MonoBehaviour:
   baseObject: {fileID: 332728650633909054}
   baseSprite: {fileID: 2545188416711138518}
   colors:
-  - {r: 1, g: 0.6367924, b: 0.9014153, a: 1}
-  - {r: 0.41176474, g: 0.9607843, b: 0.9282623, a: 1}
-  - {r: 0.5832547, g: 1, b: 0.5613208, a: 1}
-  - {r: 0.992366, g: 1, b: 0.4292453, a: 1}
-  - {r: 1, g: 0.71400607, b: 0.427451, a: 1}
+  - {r: 0.5849056, g: 0.37387466, b: 0.22347811, a: 1}
+  - {r: 0.25569597, g: 0.3207547, b: 0.31703708, a: 1}
+  - {r: 0.5579515, g: 0.6037736, b: 0.5553578, a: 1}
+  - {r: 0.21626917, g: 0.5660378, b: 0.5239013, a: 1}
+  - {r: 0.5, g: 0.10613209, b: 0.33633712, a: 1}
+  - {r: 0.13745533, g: 0.5019608, b: 0.10588236, a: 1}
+  - {r: 0.5019608, g: 0.4892462, b: 0.10588236, a: 1}
+  myPlatform: {fileID: 0}
   baseObject1: {fileID: 4491512474711727812}
   baseObject2: {fileID: 4208993459732912972}
   baseObject3: {fileID: 3865535794020588490}

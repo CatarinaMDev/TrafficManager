@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1052498027925856788}
   - component: {fileID: 8532887331398628436}
   - component: {fileID: 5725559510201949362}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Circle (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -80,7 +80,7 @@ SpriteRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 3
+  m_SortingOrder: 1
   m_MaskInteraction: 0
   m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -118,7 +118,7 @@ GameObject:
   - component: {fileID: 4739263048314241129}
   - component: {fileID: 4322765131190609948}
   - component: {fileID: 3771682269403991905}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Circle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -187,7 +187,7 @@ SpriteRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 2
+  m_SortingOrder: 0
   m_MaskInteraction: 0
   m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
   m_Color: {r: 0.8962264, g: 0.72936517, b: 0.63834995, a: 1}
@@ -226,7 +226,7 @@ GameObject:
   - component: {fileID: 2597456531122963400}
   - component: {fileID: 2787467052800584278}
   - component: {fileID: -7439204071111264331}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Boat
   m_TagString: Vehicle
   m_Icon: {fileID: 0}
@@ -263,7 +263,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Boat
   speed: 4
-  color: {r: 0, g: 0, b: 0, a: 0}
   direction: 0
   way: 0
   isUrgent: 0
@@ -271,6 +270,8 @@ MonoBehaviour:
   isInRedLight: 1
   baseObject: {fileID: 2775115566358016867}
   baseSprite: {fileID: 8532887331398628436}
+  colors: []
+  myPlatform: {fileID: 0}
 --- !u!61 &2787467052800584278
 BoxCollider2D:
   m_ObjectHideFlags: 0

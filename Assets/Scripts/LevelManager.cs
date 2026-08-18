@@ -54,6 +54,8 @@ public class LevelManager : MonoBehaviour
         InvokeRepeating("AddRoadVehicle", 0f, 2f);//dps falta pensar em evocar o train e o boat
         totalCarsNeeded = nivelAtual + 5;//ver a matematica q vou usar
 
+        InvokeRepeating("AddTrain", 0f, 10f);
+        InvokeRepeating("AddBoat", 0f, 10f);
     }
 
     void AddRoadVehicle()
@@ -76,15 +78,15 @@ public class LevelManager : MonoBehaviour
 
     void AddBoat()
     {
-  
-        /**River riverChosen = rivers[0];
+        GameObject riverChosen = rivers[Random.Range(0, rails.Length)];
 
-        Transform spawnPoint = riverChosen.GetComponent<River>().spawnPoint;
+
+        Transform spawnPoint = riverChosen.GetComponent<River>().spawnPoints[Random.Range(0, riverChosen.GetComponent<River>().spawnPoints.Count)];
         Vector3 position = spawnPoint.position;
-        Vector3 direction = riverChosen.GetComponent<River>().getDirection();
-        Instantiate(boatPrefab, new Vector3(position.x, position.y,position.z), Quaternion.identity);
-    */
+        Instantiate(boatPrefab, new Vector3(position.x, position.y, position.z), Quaternion.identity);
+
     }
+
 
     public void AddPoints()
     {

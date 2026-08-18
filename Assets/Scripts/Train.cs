@@ -15,19 +15,33 @@ public class Train : Vehicle
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+
         baseSprite1 = baseObject1.GetComponent<SpriteRenderer>();
         baseSprite2 = baseObject2.GetComponent<SpriteRenderer>();
         baseSprite3 = baseObject3.GetComponent<SpriteRenderer>();
 
-        baseSprite1.color = Color.red;
-        baseSprite2.color = Color.yellow;
-        baseSprite3.color = Color.pink;
+        baseSprite1.color = colors[Random.Range(0, colors.Length)];
+        baseSprite2.color = colors[Random.Range(0, colors.Length)];
+        baseSprite3.color = colors[Random.Range(0, colors.Length)];
+        transform.localScale = new Vector3(5.27f, 0.42f, 1.23f);
+    }
+    void Update()
+    {
+        if (hasRail) Move();
+
     }
 
-    void OnTriggerEnter2D(Collider2D collision) {
-        if (collision.gameObject.tag == "Rail" && !hasRail) {
+    void OnTriggerEnter2D(Collider2D collision)
+    {
+
+        if (collision.gameObject.tag == "Rail" && !hasRail)
+        {
+            myPlatform = collision.gameObject;
             myWay = collision.GetComponent<Rail>().getDirection();
-            hasRail = true;
+            LookTo(myWay);
+            hasRail = true; //Falta a parte de mudar de estrada
         }
     }
+
+
 }

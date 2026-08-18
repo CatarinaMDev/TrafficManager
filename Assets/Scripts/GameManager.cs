@@ -42,13 +42,13 @@ public class GameManager : MonoBehaviour
     public void GameOver()
     {
         Debug.Log("GAME OVER");
-        PauseGame();
+        Time.timeScale = 0f;
     }
 
     public void LevelCompleted()
     {
         Debug.Log("LEVEL COMPLETED");
-        PauseGame();
+        //PauseGame();
         //SceneManager.LoadScene(nivelAtual + 1);
 
     }
