@@ -38,6 +38,10 @@ public abstract class Vehicle : MonoBehaviour
        
     }
 
+    protected virtual void musStop()
+    {
+
+    }
 
     protected virtual void StopMovement()
     {
@@ -60,7 +64,7 @@ public abstract class Vehicle : MonoBehaviour
     protected virtual void OnTriggerEnter2D(Collider2D collision)
     {
 
-        if (collision.gameObject.tag == "Vehicle") {
+        if (collision.gameObject.CompareTag("Vehicle") && collision.gameObject.layer==3) {
             Debug.Log("Collision!");
             GameManager.instance.GameOver();
         }

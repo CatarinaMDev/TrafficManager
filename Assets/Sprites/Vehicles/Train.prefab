@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: -4882262142688306146}
   - component: {fileID: 6465752643301474608}
   - component: {fileID: 6072427720949039447}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Train
   m_TagString: Vehicle
   m_Icon: {fileID: 0}
@@ -129,6 +129,9 @@ MonoBehaviour:
   baseObject1: {fileID: 4491512474711727812}
   baseObject2: {fileID: 4208993459732912972}
   baseObject3: {fileID: 3865535794020588490}
+  raycastSees:
+    serializedVersion: 2
+    m_Bits: 8
 --- !u!61 &6465752643301474608
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -212,7 +215,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6181086240211944860}
   - component: {fileID: 6194823636382144504}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Base (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -281,7 +284,7 @@ SpriteRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 6
+  m_SortingOrder: 4
   m_MaskInteraction: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
   m_Color: {r: 0.80732566, g: 0.9339623, b: 0.46257564, a: 1}
@@ -303,7 +306,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4945155926426644110}
   - component: {fileID: 2395948699671947578}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Base (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -372,7 +375,7 @@ SpriteRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 6
+  m_SortingOrder: 4
   m_MaskInteraction: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
   m_Color: {r: 0.80732566, g: 0.9339623, b: 0.46257564, a: 1}
@@ -394,7 +397,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3482396952662947006}
   - component: {fileID: 7265967906751893168}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Base
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -463,7 +466,7 @@ SpriteRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 6
+  m_SortingOrder: 4
   m_MaskInteraction: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
   m_Color: {r: 0.80732566, g: 0.9339623, b: 0.46257564, a: 1}

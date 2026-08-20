@@ -8,11 +8,10 @@ public class Train : Vehicle
     private SpriteRenderer baseSprite1;
     private SpriteRenderer baseSprite2;
     private SpriteRenderer baseSprite3;
-
+    public LayerMask raycastSees;
     private bool hasRail = false;
-    private Vector2 myWay;
-
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    private Vector3 myWay;
+    float distance = 0.3f;
     void Start()
     {
 
@@ -27,14 +26,36 @@ public class Train : Vehicle
     }
     void Update()
     {
-        if (hasRail) Move();
+        if (hasRail) {
+            Vector3 beginRaycast = transform.position + (myWay * 3f);
+            Debug.DrawRay(beginRaycast, myWay * distance, Color.blue);
+            RaycastHit2D hit = Physics2D.Raycast(beginRaycast, myWay, distance, raycastSees);
 
+            if (hit.collider != null)
+            {
+                Debug.Log("Collider q apanhei:" + hit.collider.tag + "nome" + hit.collider.name + hit.collider.gameObject.GetComponent<Train>());
+
+                if (hit.collider.CompareTag("Vehicle") && hit.collider.gameObject.GetComponent<Train>() != null)
+                {
+                    StopMovement();
+                }
+                else
+                {
+                    Move();
+                }
+            }
+            else
+            {
+                Move();
+            }
+        }
+       
     }
 
     void OnTriggerEnter2D(Collider2D collision)
     {
 
-        if (collision.gameObject.tag == "Rail" && !hasRail)
+        if (collision.gameObject.CompareTag("Rail") && !hasRail)
         {
             myPlatform = collision.gameObject;
             myWay = collision.GetComponent<Rail>().getDirection();

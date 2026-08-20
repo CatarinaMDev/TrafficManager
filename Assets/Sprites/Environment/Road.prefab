@@ -81,7 +81,7 @@ SpriteRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 2
   m_MaskInteraction: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
   m_Color: {r: 0.16037738, g: 0.16037738, b: 0.16037738, a: 1}
@@ -106,10 +106,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Road
   myTrafficLight: {fileID: 4682328189534839520, guid: 5a1eb2a31dccce44e9dc7576a8abc845, type: 3}
-  Z: 0
-  Y: 0
-  X: 0
   direction: 0
+  spawnPoint: {fileID: 0}
 --- !u!61 &5514314915465803788
 BoxCollider2D:
   m_ObjectHideFlags: 0

@@ -29,12 +29,13 @@ public class Car : Vehicle
         {
             if (hasRoad)
             {
+
                     Debug.DrawRay(transform.position + (myWay * 0.5f), myWay * distance, Color.pink);
                     RaycastHit2D hit = Physics2D.Raycast(transform.position + (myWay * 0.5f), myWay, distance , raycastSees);
                     if (hit.collider != null)
                     {
                     Debug.Log("Collider q apanhei:" + hit.collider.tag);
-                        if ((hit.collider.tag == "Vehicle" && this.myPlatform==hit.collider.gameObject.GetComponent<Vehicle>().myPlatform)
+                        if ((hit.collider.CompareTag("Vehicle") && this.myPlatform==hit.collider.gameObject.GetComponent<Vehicle>().myPlatform)
                             ||(hit.collider.tag == "StopLine" && !isUrgent && trafficLight.isRed))
                         {
                             StopMovement();
@@ -64,7 +65,7 @@ public class Car : Vehicle
         base.OnTriggerEnter2D(collision);
 
 
-        if (collision.gameObject.tag == "Road" && !hasRoad)
+        if (collision.gameObject.CompareTag("Road") && !hasRoad)
         {
             myPlatform = collision.gameObject;
             trafficLight = collision.GetComponent<Road>().myTrafficLight;
@@ -72,7 +73,7 @@ public class Car : Vehicle
             LookTo(myWay);
             hasRoad = true; //Falta a parte de mudar de estrada
         }
-        else if (collision.gameObject.tag == "Checkmark")
+        else if (collision.gameObject.CompareTag("Checkmark"))
         {
             showCheck();
             LevelManager.instance.AddPoints();
