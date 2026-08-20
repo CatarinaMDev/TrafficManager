@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections;
 using UnityEngine.SceneManagement; // Obrigatório para lidar com Cenas!
 
 public class LevelManager : MonoBehaviour
@@ -66,19 +67,29 @@ public class LevelManager : MonoBehaviour
         Vector3 position = roadChosen.GetComponent<Road>().spawnPoint.position;
         Instantiate(roadPrefab, new Vector3(position.x, position.y,position.z), Quaternion.identity);
     }
-        void AddTrain()
+    void AddTrain()
     {
-        
-        GameObject railChosen= rails[Random.Range(0, rails.Length)];
+        StartCoroutine(SpawnTrainRoutine());
+    }
 
-        Vector3 position = railChosen.GetComponent<Rail>().spawnPoint.position;
+    private IEnumerator SpawnTrainRoutine()
+    {
+
+        GameObject railChosen = rails[Random.Range(0, rails.Length)]; 
+        Rail railComponent = railChosen.GetComponent<Rail>();
+
+        railComponent.warningLight.Light();
+
+        yield return new WaitForSeconds(4f);
+
+        Vector3 position = railComponent.spawnPoint.position;
         Instantiate(trainPrefab, new Vector3(position.x, position.y, position.z), Quaternion.identity);
     }
 
-
+ 
     void AddBoat()
     {
-        GameObject riverChosen = rivers[Random.Range(0, rails.Length)];
+        GameObject riverChosen = rivers[Random.Range(0, rivers.Length)];
 
 
         Transform spawnPoint = riverChosen.GetComponent<River>().spawnPoints[Random.Range(0, riverChosen.GetComponent<River>().spawnPoints.Count)];

@@ -13,6 +13,7 @@ public class Rail : MonoBehaviour
 {
     [SerializeField] public DirectionRail direction;
     public Transform spawnPoint;
+    public WarningLight warningLight;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
