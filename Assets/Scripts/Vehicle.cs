@@ -1,4 +1,6 @@
 using UnityEngine;
+using System.Collections;
+
 
 public abstract class Vehicle : MonoBehaviour
 {
@@ -15,6 +17,7 @@ public abstract class Vehicle : MonoBehaviour
 
     public GameObject baseObject;
     public SpriteRenderer baseSprite;
+    protected Vector3 myWay;
 
     public Color[] colors;
 
@@ -38,10 +41,6 @@ public abstract class Vehicle : MonoBehaviour
        
     }
 
-    protected virtual void musStop()
-    {
-
-    }
 
     protected virtual void StopMovement()
     {
@@ -54,6 +53,7 @@ public abstract class Vehicle : MonoBehaviour
 
     protected virtual void Move()
     {
+        
         Vector3 direction = new Vector3(1f, 0f, 0f);
         Debug.Log("Moving "+ this.name + ":" + direction);
         Debug.Log("Moving:" + Vector3.right);
@@ -66,9 +66,23 @@ public abstract class Vehicle : MonoBehaviour
 
         if (collision.gameObject.CompareTag("Vehicle") && collision.gameObject.layer==3) {
             Debug.Log("Collision!");
-            GameManager.instance.GameOver();
+            CollideWithOtherVehicle();
+            Coroutine_gameOver();
         }
 
+    }
+
+    protected IEnumerator Coroutine_gameOver()
+    {
+        Debug.Log("ImHERE");
+        yield return new WaitForSeconds(0.5f);
+        Debug.Log("LALALAL");
+        GameManager.instance.GameOver();
+    }
+
+    public virtual void CollideWithOtherVehicle()
+    {
+        StopMovement();
     }
 
     protected virtual void OnBecameInvisible()
@@ -101,6 +115,7 @@ public abstract class Vehicle : MonoBehaviour
         }
     }
 
+    
 
 }
 

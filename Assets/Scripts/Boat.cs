@@ -3,7 +3,7 @@ using UnityEngine;
 public class Boat : Vehicle
 {
     private bool hasRiver = false;
-    private Vector3 myWay;
+   
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
