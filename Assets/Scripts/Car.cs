@@ -10,7 +10,7 @@ public class Car : Vehicle
     private bool isGonnaChangeRoad = false;
     private bool hasRoad = false;
     private float distance = 0.1f;
-    private Vector3 myWay;
+ 
 
     public GameObject check;
     void Awake()
@@ -29,12 +29,10 @@ public class Car : Vehicle
         {
             if (hasRoad)
             {
-
-                    Debug.DrawRay(transform.position + (myWay * 0.5f), myWay * distance, Color.pink);
+                Debug.DrawRay(transform.position + (myWay * 0.5f), myWay * distance, Color.pink);
                     RaycastHit2D hit = Physics2D.Raycast(transform.position + (myWay * 0.5f), myWay, distance , raycastSees);
                     if (hit.collider != null)
                     {
-                    Debug.Log("Collider q apanhei:" + hit.collider.tag);
                         if ((hit.collider.CompareTag("Vehicle") && this.myPlatform==hit.collider.gameObject.GetComponent<Vehicle>().myPlatform)
                             ||(hit.collider.tag == "StopLine" && !isUrgent && trafficLight.isRed))
                         {
@@ -62,8 +60,9 @@ public class Car : Vehicle
     // Código específico do Carro para bater (Hit)
     void OnTriggerEnter2D(Collider2D collision) 
     {
+        if (hasRoad) { 
         base.OnTriggerEnter2D(collision);
-
+        }
 
         if (collision.gameObject.CompareTag("Road") && !hasRoad)
         {
@@ -89,5 +88,32 @@ public class Car : Vehicle
         }
     }
 
+
+    public override void CollideWithOtherVehicle()
+    {
+
+        hasRoad = false;
+        Rigidbody2D rb = GetComponent<Rigidbody2D>();
+
+        if (rb != null)
+        {
+            // 3. Muda para Dynamic para a física tomar conta dele
+            rb.bodyType = RigidbodyType2D.Dynamic;
+
+            // 4. (MUITO IMPORTANTE) Como é Top-Down, a gravidade tem de ser 0 senão ele cai para fora do ecrã!
+            rb.gravityScale = 0f;
+
+            // 5. Calcula uma direção aleatória para ele ser atirado
+            // Atiramos um bocadinho para trás (-myWay) e um bocadinho para os lados (Random)
+            Vector2 randomDirection = new Vector2(Random.Range(-1f, 1f), Random.Range(-1f, 1f));
+            Vector2 impactForce = (-(Vector2)myWay + randomDirection).normalized;
+
+           
+            rb.AddForce(impactForce, ForceMode2D.Impulse);
+
+            // Rotation 
+            rb.AddTorque(Random.Range(-5f, 5), ForceMode2D.Impulse);
+        }
+    }
 
 }
