@@ -10,13 +10,14 @@ public class Car : Vehicle
     private bool isGonnaChangeRoad = false;
     private bool hasRoad = false;
     private float distance = 0.1f;
- 
 
+    protected bool zeroClicks;
     public GameObject check;
     void Awake()
     {
         if (check != null)
         {
+            zeroClicks = false;
             check.SetActive(false);
         }
         
@@ -29,12 +30,23 @@ public class Car : Vehicle
         {
             if (hasRoad)
             {
-                Debug.DrawRay(transform.position + (myWay * 0.5f), myWay * distance, Color.pink);
-                    RaycastHit2D hit = Physics2D.Raycast(transform.position + (myWay * 0.5f), myWay, distance , raycastSees);
+                if (zeroClicks)
+                {
+                    Debug.Log("Meus clicks remaining= " + zeroClicks);
+                    base.speed = 3f;
+                    Move();
+                }
+                else
+                {
+
+                    Debug.DrawRay(transform.position + (myWay * 0.5f), myWay * distance, Color.pink);
+                    RaycastHit2D hit = Physics2D.Raycast(transform.position + (myWay * 0.5f), myWay, distance, raycastSees);
                     if (hit.collider != null)
                     {
-                        if ((hit.collider.CompareTag("Vehicle") && this.myPlatform==hit.collider.gameObject.GetComponent<Vehicle>().myPlatform)
-                            ||(hit.collider.tag == "StopLine" && !isUrgent && trafficLight.isRed))
+
+
+                        if ((hit.collider.CompareTag("Vehicle") && this.myPlatform == hit.collider.gameObject.GetComponent<Vehicle>().myPlatform)
+                            || (hit.collider.tag == "StopLine" && trafficLight.isRed))
                         {
                             StopMovement();
                         }
@@ -48,17 +60,20 @@ public class Car : Vehicle
                         Move();
                     }
                 }
-                else
-                {
-                    StopMovement();
-                }
+            }
+            else
+            {
+                StopMovement();
+            }
 
-    
+
         }
+
+   
     }
 
     // Código específico do Carro para bater (Hit)
-    void OnTriggerEnter2D(Collider2D collision) 
+    protected virtual void OnTriggerEnter2D(Collider2D collision) 
     {
         if (hasRoad) { 
         base.OnTriggerEnter2D(collision);
@@ -74,6 +89,7 @@ public class Car : Vehicle
         }
         else if (collision.gameObject.CompareTag("Checkmark"))
         {
+       
             showCheck();
             LevelManager.instance.AddPoints();
         }
@@ -88,6 +104,7 @@ public class Car : Vehicle
         }
     }
 
+    
 
     public override void CollideWithOtherVehicle()
     {

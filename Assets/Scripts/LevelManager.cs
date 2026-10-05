@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement; // Obrigatório para lidar com Cenas!
 public class LevelManager : MonoBehaviour
 {
     public static LevelManager instance;
-    private int nivelAtual;
+    private int currentLevel;
 
     private GameObject[] roads;
     private GameObject[] rivers;
@@ -35,9 +35,9 @@ public class LevelManager : MonoBehaviour
     void Start()
     {
         totalCarsPassed = 0;
-        nivelAtual = SceneManager.GetActiveScene().buildIndex;
+        currentLevel = SceneManager.GetActiveScene().buildIndex;
 
-        Debug.Log("Bem-vindo ao Nível " + nivelAtual);
+        Debug.Log("Welcome to level " + currentLevel);
             
         if (roads == null)
             roads = GameObject.FindGameObjectsWithTag("Road");
@@ -53,7 +53,7 @@ public class LevelManager : MonoBehaviour
 
 
         InvokeRepeating("AddRoadVehicle", 0f, 2f);//dps falta pensar em evocar o train e o boat
-        totalCarsNeeded = nivelAtual + 5;//ver a matematica q vou usar
+        totalCarsNeeded = currentLevel + 5;//ver a matematica q vou usar
 
         InvokeRepeating("AddTrain", 0f, 10f);
         InvokeRepeating("AddBoat", 0f, 10f);
