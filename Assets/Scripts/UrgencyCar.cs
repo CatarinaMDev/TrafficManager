@@ -8,6 +8,7 @@ public class UrgencyCar : Car
     [SerializeField] GameObject Light2;
     [SerializeField] TextMeshPro textClicks;
     public GameObject NrsClicks;
+    bool hasPassed = false;
     
     SpriteRenderer L1Sprite;
     SpriteRenderer L2Sprite;
@@ -49,6 +50,7 @@ public class UrgencyCar : Car
         if(collision.gameObject.CompareTag("StopLine")){
             if (NrsClicks != null)
             {
+                hasPassed = true;
                 NrsClicks.SetActive(false);
             }
         }
@@ -67,11 +69,9 @@ public class UrgencyCar : Car
         {
             textClicks.color = Color.red;
         }
-        if (nrClicksMax == 0)
+        if (nrClicksMax == 0 && !hasPassed)
         {
-            Debug.Log("Ambulance with zero patience! Going Forward!");
             base.zeroClicks=true;
-            Debug.Log("clicks remaining:" + base.zeroClicks);
             NrsClicks.SetActive(false);
         }
     }
