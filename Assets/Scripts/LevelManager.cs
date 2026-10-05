@@ -1,5 +1,7 @@
 using UnityEngine;
 using System.Collections;
+using TMPro;
+using System.Collections.Generic;
 using UnityEngine.SceneManagement; // Obrigatório para lidar com Cenas!
 
 public class LevelManager : MonoBehaviour
@@ -17,7 +19,12 @@ public class LevelManager : MonoBehaviour
 
     public int totalCarsNeeded;
     public int totalCarsPassed;
-    
+
+    [SerializeField] TextMeshProUGUI carsInfo_Text;
+    [SerializeField] TextMeshProUGUI time_Text;
+    [SerializeField] TextMeshProUGUI level_Text;
+
+    float elapsedTime;
 
 
     void Awake()
@@ -34,9 +41,10 @@ public class LevelManager : MonoBehaviour
 
     void Start()
     {
+        
         totalCarsPassed = 0;
         currentLevel = SceneManager.GetActiveScene().buildIndex;
-
+        level_Text.text = currentLevel.ToString();
         Debug.Log("Welcome to level " + currentLevel);
             
         if (roads == null)
@@ -51,14 +59,22 @@ public class LevelManager : MonoBehaviour
             rails = GameObject.FindGameObjectsWithTag("Rail");
         Debug.Log("Caminhos de Ferro detetados automaticamente: " + rails.Length);
 
-
-        InvokeRepeating("AddRoadVehicle", 0f, 2f);//dps falta pensar em evocar o train e o boat
-        totalCarsNeeded = currentLevel + 5;//ver a matematica q vou usar
-
-        InvokeRepeating("AddTrain", 0f, 10f);
-        InvokeRepeating("AddBoat", 0f, 10f);
+        if (roads.Length > 0)
+            InvokeRepeating("AddRoadVehicle", 0f, 2f);
+        totalCarsNeeded = (currentLevel* currentLevel)*2 + 8;
+        carsInfo_Text.text = totalCarsPassed + "/" + totalCarsNeeded;
+        if (rails.Length > 0)
+            InvokeRepeating("AddTrain", 0f, 10f);
+        if (rivers.Length > 0)
+            InvokeRepeating("AddBoat", 0f, 10f);
     }
-
+    void Update()
+    {
+        elapsedTime += Time.deltaTime;  
+        int minutes = Mathf.FloorToInt(elapsedTime / 60);
+        int seconds = Mathf.FloorToInt(elapsedTime % 60);
+        time_Text.text = string.Format("{0:00}:{1:00}", minutes, seconds);
+    }
     void AddRoadVehicle()
     {
         GameObject roadPrefab = roadVehicles[Random.Range(0, roadVehicles.Length)];//mudar a probabilistica entre carro normal (dps carro > truck) > e urgenci (dps police>ambulance)
@@ -102,9 +118,15 @@ public class LevelManager : MonoBehaviour
     public void AddPoints()
     {
         totalCarsPassed++;
+        carsInfo_Text.text = totalCarsPassed + "/" + totalCarsNeeded;
         if (totalCarsPassed == totalCarsNeeded)
         {
             GameManager.instance.LevelCompleted();
         }
+    }
+
+    public string getFinalTime()
+    {
+        return time_Text.text;
     }
 }

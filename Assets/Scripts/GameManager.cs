@@ -5,10 +5,17 @@ public class GameManager : MonoBehaviour
     public static GameManager instance;
     private bool levelPaused = true;
     private int nivelAtual;
+    private LevelManager levelManager;
 
+    [SerializeField] GameObject gameOverPanel;
+    [SerializeField] GameObject winPanel;
+    [SerializeField] GameObject definitionsPanel;
+    [SerializeField] TMPro.TextMeshProUGUI winTimeText;
 
     void Awake()
     {
+        gameOverPanel.SetActive(false);
+        winPanel.SetActive(false);
         // Regra de segurança: Se já existir um GameManager na cena, destrói o novo para não haver dois "chefes" ao mesmo tempo.
         if (instance != null)
         {
@@ -23,6 +30,7 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         nivelAtual = SceneManager.GetActiveScene().buildIndex;
+        levelManager = GetComponent<LevelManager>();
         PauseGame();
     }
 
@@ -43,44 +51,63 @@ public class GameManager : MonoBehaviour
     {
         Debug.Log("GAME OVER");
         Time.timeScale = 0f;
+        gameOverPanel.SetActive(true);
     }
 
     public void LevelCompleted()
     {
         Debug.Log("LEVEL COMPLETED");
-        //PauseGame();
+        Time.timeScale = 0f;
+        winPanel.SetActive(true);
+        winTimeText.text = "Time: " + levelManager.getFinalTime();
         //SceneManager.LoadScene(nivelAtual + 1);
 
     }
 
-    void PauseGame()
+    public void PauseGame()
     {
         levelPaused = !levelPaused;
         if (levelPaused)
         {
             Time.timeScale = 0f;
+            definitionsPanel.SetActive(true);
         }
         else
         {
            Time.timeScale = 1f;
+            definitionsPanel.SetActive(false);
         }
+        
 
  
     }
 
-    void RestartGame()
+    public void ResumeGame()
+    {
+        levelPaused = false;
+        Time.timeScale = 1f;
+        definitionsPanel.SetActive(false);
+    }
+
+    public void RestartLevel()
     {
         SceneManager.LoadScene(nivelAtual);
     }
 
-    void RestartLevel()
+    public void BackToMainMenu()
     {
-        SceneManager.LoadScene(nivelAtual);
+        SceneManager.LoadScene(0);
     }
 
-    void BackToMainMenu()
+    public void ChangeVolume(float slideValue)
     {
-
+        AudioListener.volume = slideValue;
     }
+
+    public void NextLevel()
+    {
+        SceneManager.LoadScene(nivelAtual+1);
+    }
+
 
 }
