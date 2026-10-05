@@ -1,5 +1,6 @@
 using UnityEngine;
-using UnityEngine.EventSystems; 
+using UnityEngine.EventSystems;
+using System;
 public class TrafficLight : MonoBehaviour, IPointerClickHandler
 {
     [SerializeField] GameObject greenLight;
@@ -7,6 +8,8 @@ public class TrafficLight : MonoBehaviour, IPointerClickHandler
 
     SpriteRenderer greenSprite;
     SpriteRenderer redSprite;
+
+    public static event Action trafficLightClicked;
 
     public bool isRed
     {
@@ -35,6 +38,7 @@ public class TrafficLight : MonoBehaviour, IPointerClickHandler
     public void OnPointerClick(PointerEventData eventData)
     {
         isRed = !isRed;
+        trafficLightClicked?.Invoke();
     }
 
     void changeColor()

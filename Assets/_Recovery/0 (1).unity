@@ -745,10 +745,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Road_Down
       objectReference: {fileID: 0}
-    - target: {fileID: 7111185159856873122, guid: b6c70c4a9b87d9c459c81eff30512964, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 8555309762556146723, guid: b6c70c4a9b87d9c459c81eff30512964, type: 3}
       propertyPath: m_LocalPosition.x
       value: 5.1590414
@@ -6253,10 +6249,6 @@ PrefabInstance:
     - target: {fileID: 332728650633909054, guid: e1bc98738b09d624382e9be68a9bb2c8, type: 3}
       propertyPath: m_Name
       value: Ambulance
-      objectReference: {fileID: 0}
-    - target: {fileID: 332728650633909054, guid: e1bc98738b09d624382e9be68a9bb2c8, type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7813857432128450303, guid: e1bc98738b09d624382e9be68a9bb2c8, type: 3}
       propertyPath: m_LocalPosition.x
