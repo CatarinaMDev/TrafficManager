@@ -12,8 +12,10 @@ public class GameManager : MonoBehaviour
     [SerializeField] GameObject definitionsPanel;
     [SerializeField] TMPro.TextMeshProUGUI winTimeText;
 
+
     void Awake()
     {
+
         gameOverPanel.SetActive(false);
         winPanel.SetActive(false);
         // Regra de segurança: Se já existir um GameManager na cena, destrói o novo para não haver dois "chefes" ao mesmo tempo.
@@ -29,6 +31,7 @@ public class GameManager : MonoBehaviour
     }
     void Start()
     {
+       
         nivelAtual = SceneManager.GetActiveScene().buildIndex;
         levelManager = GetComponent<LevelManager>();
         PauseGame();
@@ -50,6 +53,7 @@ public class GameManager : MonoBehaviour
     public void GameOver()
     {
         Debug.Log("GAME OVER");
+        AudioManager.instance.PlaySFX(AudioManager.instance.gameOverSound);
         Time.timeScale = 0f;
         gameOverPanel.SetActive(true);
     }
@@ -57,6 +61,7 @@ public class GameManager : MonoBehaviour
     public void LevelCompleted()
     {
         Debug.Log("LEVEL COMPLETED");
+        AudioManager.instance.PlaySFX(AudioManager.instance.winSound);
         Time.timeScale = 0f;
         winPanel.SetActive(true);
         winTimeText.text = "Time: " + levelManager.getFinalTime();
@@ -99,10 +104,6 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene(0);
     }
 
-    public void ChangeVolume(float slideValue)
-    {
-        AudioListener.volume = slideValue;
-    }
 
     public void NextLevel()
     {
