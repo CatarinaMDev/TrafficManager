@@ -4,6 +4,7 @@ public class MainPage : MonoBehaviour
 {
     [SerializeField] GameObject instructionsPanel;
     public static MainPage instance;
+    bool instructions_ON = false;
     void Awake()
     {
 
@@ -30,7 +31,17 @@ public class MainPage : MonoBehaviour
 
     public void Instructions()
     {
-        instructionsPanel.SetActive(true);
+        instructions_ON = !instructions_ON;
+            if (instructions_ON)
+        {
+            instructionsPanel.SetActive(true);
+
+        }
+        else
+        {
+            instructionsPanel.SetActive(false);
+
+        }
     }
 
 

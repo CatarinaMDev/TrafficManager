@@ -76,7 +76,7 @@ public class UrgencyCar : Car
                 AudioManager.instance.PlaySFX(AudioManager.instance.honk);
                 textClicks.color = Color.red;
             }
-            if (nrClicksMax == 0)
+            if (nrClicksMax == -1)
             {
                 base.zeroClicks=true;
                 NrsClicks.SetActive(false);
