@@ -63,16 +63,24 @@ public class UrgencyCar : Car
     }
 
     private void Clicking() {
-        nrClicksMax--;
-        textClicks.text = nrClicksMax.ToString();
-        if (nrClicksMax < 3)
+        if (hasPassed)
         {
-            textClicks.color = Color.red;
-        }
-        if (nrClicksMax == 0 && !hasPassed)
-        {
-            base.zeroClicks=true;
             NrsClicks.SetActive(false);
+        }
+        else {
+            
+            nrClicksMax--;
+            textClicks.text = nrClicksMax.ToString();
+            if (nrClicksMax < 3)
+            {
+                AudioManager.instance.PlaySFX(AudioManager.instance.honk);
+                textClicks.color = Color.red;
+            }
+            if (nrClicksMax == 0)
+            {
+                base.zeroClicks=true;
+                NrsClicks.SetActive(false);
+            }
         }
     }
 

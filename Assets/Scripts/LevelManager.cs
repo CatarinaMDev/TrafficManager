@@ -95,11 +95,12 @@ public class LevelManager : MonoBehaviour
         Rail railComponent = railChosen.GetComponent<Rail>();
 
         railComponent.warningLight.Light();
-
+        AudioManager.instance.PlaySFX(AudioManager.instance.train_warning);
         yield return new WaitForSeconds(4f);
 
         Vector3 position = railComponent.spawnPoint.position;
         Instantiate(trainPrefab, new Vector3(position.x, position.y, position.z), Quaternion.identity);
+        AudioManager.instance.PlaySFX(AudioManager.instance.train_passing);
     }
 
  

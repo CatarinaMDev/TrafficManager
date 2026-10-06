@@ -37,6 +37,7 @@ public class TrafficLight : MonoBehaviour, IPointerClickHandler
     // 3. Esta é a versão moderna e oficial que substitui o OnMouseDown -> Da com o rato ou com o dedo
     public void OnPointerClick(PointerEventData eventData)
     {
+        AudioManager.instance.PlaySFX(AudioManager.instance.buttonClickSound);
         isRed = !isRed;
         trafficLightClicked?.Invoke();
     }

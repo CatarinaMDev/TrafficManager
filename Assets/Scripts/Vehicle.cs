@@ -72,6 +72,7 @@ public abstract class Vehicle : MonoBehaviour
 
     protected IEnumerator Coroutine_gameOver()
     {
+        AudioManager.instance.PlaySFX(AudioManager.instance.crash);
         yield return new WaitForSeconds(1f);
         GameManager.instance.GameOver();
     }
