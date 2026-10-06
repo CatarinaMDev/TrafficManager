@@ -11,6 +11,9 @@ public class GameManager : MonoBehaviour
     [SerializeField] GameObject winPanel;
     [SerializeField] GameObject definitionsPanel;
     [SerializeField] TMPro.TextMeshProUGUI winTimeText;
+    [SerializeField] TMPro.TextMeshProUGUI loseTimeText;
+    [SerializeField] TMPro.TextMeshProUGUI carsPassed;
+
 
 
     void Awake()
@@ -55,6 +58,8 @@ public class GameManager : MonoBehaviour
         Debug.Log("GAME OVER");
         AudioManager.instance.PlaySFX(AudioManager.instance.gameOverSound);
         Time.timeScale = 0f;
+        loseTimeText.text = "Time: " + levelManager.getFinalTime();
+        carsPassed.text = "Cars Passed: " + levelManager.getCarsSucceded();
         gameOverPanel.SetActive(true);
     }
 

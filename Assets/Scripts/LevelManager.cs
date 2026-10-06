@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement; // Obrigatório para lidar com Cenas!
 public class LevelManager : MonoBehaviour
 {
     public static LevelManager instance;
-    private int currentLevel;
+    private float currentLevel;
 
     private GameObject[] roads;
     private GameObject[] rivers;
@@ -17,8 +17,8 @@ public class LevelManager : MonoBehaviour
     public GameObject trainPrefab;
     public GameObject boatPrefab;
 
-    public int totalCarsNeeded;
-    public int totalCarsPassed;
+    public float totalCarsNeeded;
+    public float totalCarsPassed;
 
     [SerializeField] TextMeshProUGUI carsInfo_Text;
     [SerializeField] TextMeshProUGUI time_Text;
@@ -44,9 +44,21 @@ public class LevelManager : MonoBehaviour
         
         totalCarsPassed = 0;
         currentLevel = SceneManager.GetActiveScene().buildIndex;
-        level_Text.text = currentLevel.ToString();
-        Debug.Log("Welcome to level " + currentLevel);
-            
+        totalCarsNeeded = (currentLevel * currentLevel) * 2 + 8;
+
+        if(currentLevel == 5)
+        {
+
+            level_Text.text = "∞"; 
+            carsInfo_Text.text = totalCarsPassed + " /∞";
+        }
+        else
+        {
+
+            level_Text.text = currentLevel.ToString();
+            carsInfo_Text.text = totalCarsPassed + "/" + totalCarsNeeded;
+        }
+
         if (roads == null)
             roads = GameObject.FindGameObjectsWithTag("Road");
         Debug.Log("Estradas detetadas automaticamente: " + roads.Length);
@@ -61,12 +73,14 @@ public class LevelManager : MonoBehaviour
 
         if (roads.Length > 0)
             InvokeRepeating("AddRoadVehicle", 0f, 2f);
-        totalCarsNeeded = (currentLevel* currentLevel)*2 + 8;
-        carsInfo_Text.text = totalCarsPassed + "/" + totalCarsNeeded;
+
+        float timeVehicle = (12 - currentLevel);
         if (rails.Length > 0)
-            InvokeRepeating("AddTrain", 0f, 10f);
+            InvokeRepeating("AddTrain", 0f, timeVehicle);
+
+        timeVehicle = (8 - currentLevel);
         if (rivers.Length > 0)
-            InvokeRepeating("AddBoat", 0f, 10f);
+            InvokeRepeating("AddBoat", 0f, timeVehicle);
     }
     void Update()
     {
@@ -77,12 +91,41 @@ public class LevelManager : MonoBehaviour
     }
     void AddRoadVehicle()
     {
-        GameObject roadPrefab = roadVehicles[Random.Range(0, roadVehicles.Length)];//mudar a probabilistica entre carro normal (dps carro > truck) > e urgenci (dps police>ambulance)
-        GameObject roadChosen = roads[Random.Range(0, roads.Length)];
 
-        Vector3 position = roadChosen.GetComponent<Road>().spawnPoint.position;
-        Instantiate(roadPrefab, new Vector3(position.x, position.y,position.z), Quaternion.identity);
+        int nrCars = Random.Range(2, roads.Length);
+
+        
+        List<GameObject> availableRoads = new List<GameObject>(roads);
+
+        for (int i = 0; i < nrCars; i++){
+            if (availableRoads.Count == 0) break;
+
+            int randomRoadIndex = Random.Range(0, availableRoads.Count);
+            GameObject roadChosen = availableRoads[randomRoadIndex];
+            availableRoads.RemoveAt(randomRoadIndex);
+
+            int chance = Random.Range(0, 100);
+            GameObject prefabToSpawn;
+
+            if (chance < 60){
+                // 60% Car 
+                prefabToSpawn = roadVehicles[0];
+            }else if (chance < 85){
+                // 25% Truck
+                prefabToSpawn = roadVehicles[1];
+            } else if (chance < 95){
+                // 10% Police 
+                prefabToSpawn = roadVehicles[2];
+            }else{
+                // 5% Ambulance
+                prefabToSpawn = roadVehicles[3];
+            }
+
+            Vector3 position = roadChosen.GetComponent<Road>().spawnPoint.position;
+            Instantiate(prefabToSpawn, position, Quaternion.identity);
+        }
     }
+
     void AddTrain()
     {
         StartCoroutine(SpawnTrainRoutine());
@@ -90,17 +133,36 @@ public class LevelManager : MonoBehaviour
 
     private IEnumerator SpawnTrainRoutine()
     {
+        int nrTrains = Random.Range(1, rails.Length);
+        List<GameObject> availableRails = new List<GameObject>(rails);
+        List<GameObject> chosenRails = new List<GameObject>();
 
-        GameObject railChosen = rails[Random.Range(0, rails.Length)]; 
-        Rail railComponent = railChosen.GetComponent<Rail>();
+        for (int i = 0; i < nrTrains; i++)
+        {
+            int randomIndex = Random.Range(0, availableRails.Count);
+            chosenRails.Add(availableRails[randomIndex]);
+            availableRails.RemoveAt(randomIndex);
+        }
 
-        railComponent.warningLight.Light();
+        
+        foreach (GameObject rail_chosen in chosenRails)
+        {
+            Rail railComponent = rail_chosen.GetComponent<Rail>();
+            railComponent.warningLight.Light();
+        }
+
         AudioManager.instance.PlaySFX(AudioManager.instance.train_warning);
         yield return new WaitForSeconds(4f);
 
-        Vector3 position = railComponent.spawnPoint.position;
-        Instantiate(trainPrefab, new Vector3(position.x, position.y, position.z), Quaternion.identity);
+        foreach (GameObject rail_chosen in chosenRails)
+        {
+            Rail railComponent = rail_chosen.GetComponent<Rail>();
+            Vector3 position = railComponent.spawnPoint.position;
+            Instantiate(trainPrefab, position, Quaternion.identity);
+        }
+
         AudioManager.instance.PlaySFX(AudioManager.instance.train_passing);
+
     }
 
  
@@ -119,15 +181,28 @@ public class LevelManager : MonoBehaviour
     public void AddPoints()
     {
         totalCarsPassed++;
-        carsInfo_Text.text = totalCarsPassed + "/" + totalCarsNeeded;
-        if (totalCarsPassed == totalCarsNeeded)
+        if (currentLevel != 5 && currentLevel != 0 )
         {
-            GameManager.instance.LevelCompleted();
+            carsInfo_Text.text = totalCarsPassed + "/" + totalCarsNeeded;
+            if (totalCarsPassed == totalCarsNeeded)
+            {
+                GameManager.instance.LevelCompleted();
+            }
         }
+        else
+        {
+            carsInfo_Text.text = totalCarsPassed + "/∞";
+        }
+        
+        
     }
 
     public string getFinalTime()
     {
         return time_Text.text;
+    }
+    public float getCarsSucceded()
+    {
+        return totalCarsPassed;
     }
 }
