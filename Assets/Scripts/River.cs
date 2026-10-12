@@ -4,7 +4,10 @@ using System.Collections.Generic;
 
 public enum DirectionRiver
 {
-    horizontal, vertical
+    left,
+    right,
+    up,
+    down
 }
 
 
@@ -25,29 +28,22 @@ public class River : MonoBehaviour
         }
     }
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
 
-    public Vector3 getDirection(Vector3 position)
+    public Vector3 getDirection()
     {
-        if (direction.Equals(DirectionRiver.horizontal))
+        switch (direction)
         {
-            if (position.x < 0f)
-            {
+            case DirectionRiver.left:
+                return Vector3.left;
+            case DirectionRiver.right:
                 return Vector3.right;
-            }
-            return Vector3.left;
-        }
-        else
-        {
-            if (position.y < 0f)
-            {
+            case DirectionRiver.up:
                 return Vector3.up;
-            }
-            return Vector3.down;
+            default:
+                return Vector3.down;
         }
     }
 
 
 
-
-}
+    }

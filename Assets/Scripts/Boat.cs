@@ -17,10 +17,9 @@ public class Boat : Vehicle
         if (collision.gameObject.tag == "River" && !hasRiver)
         {
             myPlatform = collision.gameObject;
-            myWay = collision.GetComponent<River>().getDirection(transform.position);
+            myWay = collision.GetComponent<River>().getDirection();
             LookTo(myWay);
-            Debug.Log("I was born in a River im positioned: " + transform.position + " I look at " + (myWay));
-            hasRiver = true; //Falta a parte de mudar de estrada
+            hasRiver = true;
         }
     }
 }

@@ -38,7 +38,7 @@ public abstract class Vehicle : MonoBehaviour
             baseSprite.color = Color.white;
         }
 
-       
+        Debug.Log("I am " + this.name + " My color is:" + baseSprite.color);
     }
 
 
