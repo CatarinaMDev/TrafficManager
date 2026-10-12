@@ -17,13 +17,18 @@ public class AudioManager : MonoBehaviour
     public AudioClip train_warning;
     public AudioClip honk;
     public AudioClip train_passing;
-    private void Awake()
+
+    public float volumeGlobal = 1f;
+
+    void Awake()
     {
        
         if (instance == null)
         {
             instance = this;
+            DontDestroyOnLoad(gameObject);
         }
+        
         else
         {
             Destroy(gameObject);
@@ -51,5 +56,6 @@ public class AudioManager : MonoBehaviour
     public void ChangeVolume(float slideValue)
     {
         AudioListener.volume = slideValue;
+        volumeGlobal = slideValue;
     }
 }
