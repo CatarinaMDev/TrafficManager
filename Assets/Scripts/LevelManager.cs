@@ -168,12 +168,27 @@ public class LevelManager : MonoBehaviour
  
     void AddBoat()
     {
-        GameObject riverChosen = rivers[Random.Range(0, rivers.Length)];
+        int nrBoats = Random.Range(1, rivers.Length);
+        List<GameObject> availableRivers = new List<GameObject>(rivers);
+        List<GameObject> chosenRivers = new List<GameObject>();
+
+        for (int i = 0; i < nrBoats; i++)
+        {
+            int randomIndex = Random.Range(0, availableRivers.Count);
+            chosenRivers.Add(availableRivers[randomIndex]);
+            availableRivers.RemoveAt(randomIndex);
+        }
 
 
-        Transform spawnPoint = riverChosen.GetComponent<River>().spawnPoints[Random.Range(0, riverChosen.GetComponent<River>().spawnPoints.Count)];
-        Vector3 position = spawnPoint.position;
-        Instantiate(boatPrefab, new Vector3(position.x, position.y, position.z), Quaternion.identity);
+
+        foreach (GameObject river_chosen in chosenRivers)
+        {
+            Transform spawnPoint = river_chosen.GetComponent<River>().spawnPoints[Random.Range(0, river_chosen.GetComponent<River>().spawnPoints.Count)];
+            Vector3 position = spawnPoint.position;
+            Instantiate(boatPrefab, new Vector3(position.x, position.y, position.z), Quaternion.identity);
+        }
+
+
 
     }
 
