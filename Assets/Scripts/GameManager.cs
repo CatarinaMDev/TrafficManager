@@ -21,6 +21,7 @@ public class GameManager : MonoBehaviour
 
         gameOverPanel.SetActive(false);
         winPanel.SetActive(false);
+        definitionsPanel.SetActive(false);
         // Regra de segurança: Se já existir um GameManager na cena, destrói o novo para não haver dois "chefes" ao mesmo tempo.
         if (instance != null)
         {
@@ -37,7 +38,8 @@ public class GameManager : MonoBehaviour
        
         nivelAtual = SceneManager.GetActiveScene().buildIndex;
         levelManager = GetComponent<LevelManager>();
-        PauseGame();
+        Time.timeScale = 1f;
+        levelPaused = false;
     }
 
     void Update()
@@ -106,7 +108,9 @@ public class GameManager : MonoBehaviour
 
     public void BackToMainMenu()
     {
+        Time.timeScale = 1f;
         SceneManager.LoadScene(0);
+        Time.timeScale = 1f;
     }
 
 

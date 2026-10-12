@@ -338,7 +338,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c687b8495237e784b879cce98acb2f9f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Boat
-  speed: 4
+  speed: 1
   direction: 0
   way: 0
   isUrgent: 0

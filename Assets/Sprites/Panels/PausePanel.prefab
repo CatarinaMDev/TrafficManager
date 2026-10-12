@@ -381,8 +381,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4278190080
-  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -764,6 +764,7 @@ GameObject:
   m_Component:
   - component: {fileID: 813216049314210382}
   - component: {fileID: 2316691903887960560}
+  - component: {fileID: 6211864024798305631}
   m_Layer: 5
   m_Name: Volume
   m_TagString: Untagged
@@ -845,6 +846,18 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &6211864024798305631
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6726580623826729573}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 73d3b4bad6ee6b84791a5f5162893ae3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ClickAutomaticSound
 --- !u!1 &7112528477743189949
 GameObject:
   m_ObjectHideFlags: 0
