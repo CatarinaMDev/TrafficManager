@@ -25,8 +25,8 @@ Each vehicle pulls from a predefined color palette and features unique behaviors
 | **Cars** | Medium | Standard traffic unit. |
 | **Trucks** | Slow | Takes longer to clear the intersection, causing backups. |
 | **Emergency (Police/Ambulance)** | Fast | **Patience Mechanic:** Starts honking if clicks drop below 4. Runs red lights if patience hits zero. |
-| **Trains** | Extremely Fast | Unstoppable environmental hazard. Triggers a warning 4 seconds before arrival. |
-| **Boats** | Variable | Background entities moving dynamically along the river. |
+| **Trains** | Medium | Unstoppable vehicles. Triggers a warning 4 seconds before arrival. |
+| **Boats** | Slow | Background entities moving dynamically along the river. |
 
 ---
 
